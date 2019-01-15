@@ -1,0 +1,9 @@
+name: werewolves
+version: 0.0.4
+description: Deals cards for the game werewolves
+dependencies:
+  args: ^1.4.2
+  ansicolor: ^1.0.2
+executables:
+  werewolves: werewolves
+#  unittest: any
