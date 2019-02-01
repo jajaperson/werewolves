@@ -1,5 +1,5 @@
 name: werewolves
-version: 1.0.0
+version: 1.1.0
 description: Deals cards for the game werewolves
 dependencies:
   args: ^1.4.2
