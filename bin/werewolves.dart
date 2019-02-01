@@ -25,12 +25,21 @@ var dealings = <String, Rank>{};
 
 void main(List<String> arguments) {
   final parser = new ArgParser()
-    ..addFlag('narrator', abbr: 'n', defaultsTo: false);
+    ..addFlag('narrator', abbr: 'n', defaultsTo: false)
+    ..addFlag('help', abbr: 'h', defaultsTo: false);
 
   argResults = parser.parse(arguments);
   int players = int.parse(argResults.rest.length > 0 ? argResults.rest[0] : '0');
 
-  werewolves(players, argResults['narrator']);
+  if (argResults['help']) {
+    print("""  werewolves [args...] <number of players>
+
+  Options:
+    --narrator, -n  Include a narrator card                              [boolean]
+    --help, -h      Show help                                            [boolean]""");
+  } else {
+    werewolves(players, argResults['narrator']);
+  }
 }
 
 Future werewolves(int players, bool narrator) async {
