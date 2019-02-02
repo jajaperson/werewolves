@@ -1,5 +1,4 @@
 #!/usr/bin/env dart
-
 // ======================
 // IMPORTS
 // ======================
@@ -29,14 +28,16 @@ void main(List<String> arguments) {
     ..addFlag('help', abbr: 'h', defaultsTo: false);
 
   argResults = parser.parse(arguments);
-  int players = int.parse(argResults.rest.length > 0 ? argResults.rest[0] : '0');
+  int players =
+      int.parse(argResults.rest.length > 0 ? argResults.rest[0] : '0');
 
   if (argResults['help']) {
-    print("""  werewolves [args...] <number of players>
+    print('''
+werewolves [args...] <number of players>
 
-  Options:
-    --narrator, -n  Include a narrator card                              [boolean]
-    --help, -h      Show help                                            [boolean]""");
+Options:
+  --narrator, -n  Include a narrator card                              [boolean]
+  --help, -h      Show help                                            [boolean]''');
   } else {
     werewolves(players, argResults['narrator']);
   }
@@ -101,7 +102,8 @@ Future werewolves(int players, bool narrator) async {
       stdout.write(': ');
       String cmd = stdin.readLineSync().toLowerCase();
       if (cmd == 'reveal') {
-        dealings.forEach((name, card) => stdout.writeln('${dealer(name)} was ${dealer(card.toString())}.'));
+        dealings.forEach((name, card) =>
+            stdout.writeln('${dealer(name)} was ${dealer(card.toString())}.'));
       } else if (cmd == 'exit') {
         break;
       } else if (cmd == 'clear') {
@@ -113,11 +115,11 @@ ${key('exit')}   :: exit program
 ${key('help')}   :: list commands
 ${key('clear')}  :: clear the screen''');
       } else if (cmd != '') {
-        stdout.writeln(error('Unknown command. Type ')
-            + key('help')
-            + error(' followed by ')
-            + key('<return>')
-            + error(' for a list of known commands.'));
+        stdout.writeln(error('Unknown command. Type ') +
+            key('help') +
+            error(' followed by ') +
+            key('<return>') +
+            error(' for a list of known commands.'));
       }
     }
   }
